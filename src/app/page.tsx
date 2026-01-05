@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 // Social Icons as SVG components
 const InstagramIcon = () => (
@@ -28,109 +27,249 @@ const YouTubeIcon = () => (
   </svg>
 );
 
-// Link data organized by category
+// All link data with REAL URLs and LOCAL images
 const linkCategories = {
-  featured: {
-    title: "Featured",
-    links: [
-      { title: "🇨🇦 Costco Canada Membership Deals", url: "#", thumbnail: "/thumbnails/costco.jpg" },
-      { title: "🛒 Daily Amazon Deals", url: "#", thumbnail: "/thumbnails/amazon.jpg" },
-      { title: "🤫 Secret Facebook Savings Group", url: "#", thumbnail: "/thumbnails/facebook.jpg" },
-      { title: "🛍️ Shop My LTK", url: "https://www.shopltk.com/explore/savingsguru", thumbnail: "/thumbnails/ltk.jpg" },
-    ]
-  },
   freeDownloads: {
     title: "FREE Downloads",
     links: [
-      { title: "📚 Complete Guide to Couponing in Canada", url: "#", thumbnail: "/thumbnails/couponing.jpg" },
-      { title: "📱 28 Days to Digital Marketing Mastery", url: "#", thumbnail: "/thumbnails/marketing.jpg" },
+      {
+        title: "Complete Guide to Couponing in Canada",
+        url: "#",
+        thumbnail: "/images/thumbnails/couponing-guide.png",
+        badge: "FREE"
+      },
+      {
+        title: "28 Days to Digital Marketing Mastery",
+        url: "#",
+        thumbnail: "/images/thumbnails/marketing-guide.png",
+        badge: "FREE"
+      },
+    ]
+  },
+  featured: {
+    title: "Featured",
+    links: [
+      {
+        title: "Costco Canada - Membership Deal",
+        url: "https://rstyle.me/+_72JT5Cj3V6yK0F-7ACrug",
+        thumbnail: "/images/thumbnails/costco.png"
+      },
+      {
+        title: "Daily Amazon Deals",
+        url: "https://www.savingsguru.ca/author/ashly1818",
+        thumbnail: "/images/thumbnails/amazon.png"
+      },
+      {
+        title: "Secret Facebook Savings Group",
+        url: "https://www.facebook.com/groups/savingsguru",
+        thumbnail: "/images/thumbnails/facebook-group.png",
+        subtitle: "Nearly 1 million followers!"
+      },
+      {
+        title: "Shop My LTK",
+        url: "https://www.shopltk.com/explore/Ashly_Fraser",
+        thumbnail: "/images/thumbnails/ltk.png"
+      },
     ]
   },
   limitedDeals: {
-    title: "🔥 Limited Time Exclusive Deals",
+    title: "Limited Time Exclusive Deals",
     links: [
-      { title: "Lululemon - Up to 50% OFF", url: "#", thumbnail: "/thumbnails/lululemon.jpg", badge: "HOT" },
-      { title: "Michael Kors - Extra 25% OFF Sale", url: "#", thumbnail: "/thumbnails/mk.jpg" },
-      { title: "Sephora - Beauty Insider Sale", url: "#", thumbnail: "/thumbnails/sephora.jpg" },
-      { title: "GAP - 40% OFF Everything", url: "#", thumbnail: "/thumbnails/gap.jpg" },
-      { title: "Peoples Jewellers - 30% OFF", url: "#", thumbnail: "/thumbnails/peoples.jpg" },
-      { title: "Stanley - Restock Alert!", url: "#", thumbnail: "/thumbnails/stanley.jpg", badge: "NEW" },
+      {
+        title: "LuLuLemon Sale",
+        url: "https://rstyle.me/+s2g_Jh19HtM68mHQ6bwktQ",
+        thumbnail: "/images/thumbnails/lululemon.png",
+        badge: "HOT"
+      },
+      {
+        title: "Michael Kors Sale",
+        url: "https://rstyle.me/+FpDHJk_AQDMjZRgs9rISwA",
+        thumbnail: "/images/thumbnails/michael-kors.png"
+      },
+      {
+        title: "Sephora Sale",
+        url: "https://rstyle.me/+yJZdVOpPddbNrwi9x_CJzA",
+        thumbnail: "/images/thumbnails/sephora.png"
+      },
+      {
+        title: "GAP Sale",
+        url: "https://rstyle.me/+FNJEpvUwq6ZHdA6dKZU6Ew",
+        thumbnail: "/images/thumbnails/gap.png"
+      },
+      {
+        title: "Peoples Jewelers Sale",
+        url: "https://rstyle.me/+VMtCTFrlU78a1o7PbuCHXw",
+        thumbnail: "/images/thumbnails/peoples.png"
+      },
+      {
+        title: "Stanley Sale",
+        url: "https://rstyle.me/+J19t8HJlM2LK1OkvnCN6jA",
+        thumbnail: "/images/thumbnails/stanley.png",
+        badge: "NEW"
+      },
     ]
   },
   coupons: {
-    title: "🎟️ Coupons & Freebies",
+    title: "Coupons & Freebies",
     links: [
-      { title: "Printable Coupons Canada", url: "#", thumbnail: "/thumbnails/printable.jpg" },
-      { title: "Mail-Out Coupons & Samples", url: "#", thumbnail: "/thumbnails/mailout.jpg" },
-      { title: "🎂 Birthday Freebies Canada", url: "#", thumbnail: "/thumbnails/birthday.jpg" },
-      { title: "👴 Senior Discount Days", url: "#", thumbnail: "/thumbnails/senior.jpg" },
-      { title: "🎓 Student Discounts", url: "#", thumbnail: "/thumbnails/student.jpg" },
+      {
+        title: "Printable Coupons",
+        url: "https://www.savingsguru.ca/printable-coupons/",
+        thumbnail: "/images/thumbnails/printable-coupons.jpg"
+      },
+      {
+        title: "Mail Out Coupons - Savings Guru",
+        url: "https://www.savingsguru.ca/companies-to-call-for-coupons/",
+        thumbnail: "/images/thumbnails/mailout-coupons.png"
+      },
+      {
+        title: "Birthday Freebies and Offers",
+        url: "https://www.savingsguru.ca/birthday-freebies-and-offers",
+        thumbnail: "/images/thumbnails/birthday.png"
+      },
+      {
+        title: "Seniors Discounts",
+        url: "https://www.savingsguru.ca/seniors-discounts",
+        thumbnail: "/images/thumbnails/seniors.png"
+      },
+      {
+        title: "Student Discounts at Canadian Retailers",
+        url: "https://www.savingsguru.ca/student-discounts",
+        thumbnail: "/images/thumbnails/student.png"
+      },
     ]
   },
   apps: {
-    title: "💰 Money Saving Apps",
+    title: "Money Saving Apps & Tips",
     links: [
-      { title: "Flashfood - Save on groceries", url: "#", thumbnail: "/thumbnails/flashfood.jpg" },
-      { title: "Checkout 51 - Cash back", url: "#", thumbnail: "/thumbnails/checkout51.jpg" },
-      { title: "Too Good to Go - Reduce waste", url: "#", thumbnail: "/thumbnails/tgtg.jpg" },
-      { title: "Rakuten - Cash back shopping", url: "#", thumbnail: "/thumbnails/rakuten.jpg" },
-      { title: "Flipp - Digital flyers", url: "#", thumbnail: "/thumbnails/flipp.jpg" },
-      { title: "Caddle - Canadian cash back", url: "#", thumbnail: "/thumbnails/caddle.jpg" },
-      { title: "PC Optimum - Points rewards", url: "#", thumbnail: "/thumbnails/pcoptimum.jpg" },
-      { title: "DoorDash Promo Codes", url: "#", thumbnail: "/thumbnails/doordash.jpg" },
-      { title: "Skip The Dishes Deals", url: "#", thumbnail: "/thumbnails/skip.jpg" },
-      { title: "Instacart Savings", url: "#", thumbnail: "/thumbnails/instacart.jpg" },
+      {
+        title: "Free Home Depot Kids Workshop",
+        url: "https://www.homedepot.ca/en/home/ideas-how-to/workshops.html",
+        thumbnail: "/images/thumbnails/home-depot.png"
+      },
+      {
+        title: "SampleSource.com - Free Samples",
+        url: "https://www.samplesource.com/?site=en",
+        thumbnail: "/images/thumbnails/samplesource.jpg"
+      },
+      {
+        title: "Too Good To Go",
+        url: "https://www.toogoodtogo.com/en-ca/user",
+        thumbnail: "/images/thumbnails/toogoodtogo.png"
+      },
+      {
+        title: "Flashfood",
+        url: "https://flashfood.onelink.me/yAxk/referral",
+        thumbnail: "/images/thumbnails/flashfood.png",
+        subtitle: "Code: ASHL4M3YY"
+      },
+      {
+        title: "Checkout 51",
+        url: "https://www.checkout51.com/",
+        thumbnail: "/images/thumbnails/checkout51.jpg"
+      },
+      {
+        title: "reebee: Flyers & Shopping List",
+        url: "https://www.appconner.com/app-reebee-flyers-shopping-list",
+        thumbnail: "/images/thumbnails/reebee.png"
+      },
+      {
+        title: "Caddle Money Savings App",
+        url: "http://ssqt.co/mesd5EN",
+        thumbnail: "/images/thumbnails/caddle.png"
+      },
+      {
+        title: "Kruger Products Offer",
+        url: "https://mykrugerproducts.ca/en-ca/campaigns/offer",
+        thumbnail: "/images/thumbnails/kruger.jpg"
+      },
+      {
+        title: "PC Optimum Coupons",
+        url: "https://www.pcoptimum.ca/load?page=MKDigitalCoupon20230202",
+        thumbnail: "/images/thumbnails/pcoptimum.png"
+      },
+      {
+        title: "Prime Exclusive DashPass Offer",
+        url: "https://www.amazon.ca/prime/offer/doordash/prime-deal",
+        thumbnail: "/images/thumbnails/doordash-prime.png"
+      },
+      {
+        title: "Skip - Online Delivery",
+        url: "https://www.skipthedishes.com/r/AbvB0FhliE",
+        thumbnail: "/images/thumbnails/skip.png"
+      },
+      {
+        title: "DoorDash",
+        url: "https://drd.sh/c3luC9exwHXEs19d",
+        thumbnail: "/images/thumbnails/doordash.png"
+      },
+      {
+        title: "Uber Eats",
+        url: "https://ubereats.com/feed?promoCode=eats-fl8pj9j2v9",
+        thumbnail: "/images/thumbnails/ubereats.png",
+        subtitle: "Code: eats-fl8pj9j2v9"
+      },
+      {
+        title: "Instacart",
+        url: "https://inst.cr/t/77a2c1909",
+        thumbnail: "/images/thumbnails/instacart.png",
+        subtitle: "Code: A246E61"
+      },
+      {
+        title: "Flipp: Shop Grocery Deals",
+        url: "https://ca.apkpac.com/app/com.wishabi.flipp",
+        thumbnail: "/images/thumbnails/flipp.png"
+      },
     ]
   },
   news: {
-    title: "📰 In The News",
+    title: "In The News",
     links: [
-      { title: "Globe and Mail: Meet Canada's Top Deal Hunter", url: "#", thumbnail: "/thumbnails/globe.jpg" },
+      {
+        title: "The Globe and Mail: The savvy shopper's guide to scoring the best deals",
+        url: "https://www.theglobeandmail.com/business/adv/article-the-savvy-shoppers-guide-to-scoring-the-best-deals-this-holiday-season",
+        thumbnail: "/images/thumbnails/globe-mail.jpg"
+      },
     ]
   }
 };
 
-// Shop products data
+// Shop products with REAL data and LOCAL images
 const shopProducts = [
   {
     id: 1,
-    name: "Lululemon Align Pant 25\"",
-    price: "$98",
-    originalPrice: "$128",
-    image: "/products/align.jpg",
-    url: "#"
+    name: "Cinch-Waist 600-Down-Fill Puffer",
+    price: "$319",
+    image: "/images/products/puffer.webp",
+    url: "https://rstyle.me/+YYHblsQWmAKxrIgR65YH3A"
   },
   {
     id: 2,
-    name: "Michael Kors Jet Set Tote",
-    price: "$149",
-    originalPrice: "$298",
-    image: "/products/mk-tote.jpg",
-    url: "#"
+    name: "Women's Steady State Oversized Hoodie",
+    price: "$89",
+    image: "/images/products/hoodie.jpg",
+    url: "https://rstyle.me/+ijNzvzAhGl1BamvTp6i9mg"
   },
   {
     id: 3,
-    name: "Stanley Quencher 40oz",
-    price: "$34",
-    originalPrice: "$45",
-    image: "/products/stanley.jpg",
-    url: "#"
+    name: "Wunder Train High-Rise Tight 28\"",
+    price: "$49",
+    image: "/images/products/wunder-train.webp",
+    url: "https://rstyle.me/+_7qXkdNcQpimfns1Reymhw"
   },
   {
     id: 4,
-    name: "Lululemon Belt Bag",
-    price: "$38",
-    originalPrice: "$48",
-    image: "/products/beltbag.jpg",
-    url: "#"
+    name: "Voyager Large Saffiano Leather Tote Bag",
+    price: "$95.20",
+    image: "/images/products/mk-tote.jpg",
+    url: "https://rstyle.me/+oHSWlZH4E6l6EyKd6K5bcQ"
   },
   {
     id: 5,
-    name: "Michael Kors Watch",
-    price: "$199",
-    originalPrice: "$319",
-    image: "/products/mk-watch.jpg",
-    url: "#"
+    name: "Dual Pouch Wristlet *Glitter",
+    price: "$34",
+    image: "/images/products/wristlet.webp",
+    url: "https://rstyle.me/+28FzGHlGcw3VZsYhFHAGFw"
   },
 ];
 
@@ -159,9 +298,11 @@ export default function Home() {
         <div className="flex flex-col items-center mb-6">
           {/* Profile Picture */}
           <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-white shadow-lg">
-            <div className="w-full h-full bg-[#e8e6dc] flex items-center justify-center text-4xl">
-              👩‍💼
-            </div>
+            <img
+              src="/images/profile/ashly.jpg"
+              alt="Ashly - Savings Guru"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           {/* Name & Bio */}
@@ -178,7 +319,7 @@ export default function Home() {
                className="social-icon text-[#39342c] hover:text-[#5a534a]">
               <InstagramIcon />
             </a>
-            <a href="https://facebook.com/ashly.fraser.96" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.facebook.com/ashly.fraser.96/" target="_blank" rel="noopener noreferrer"
                className="social-icon text-[#39342c] hover:text-[#5a534a]">
               <FacebookIcon />
             </a>
@@ -186,7 +327,7 @@ export default function Home() {
                className="social-icon text-[#39342c] hover:text-[#5a534a]">
               <TikTokIcon />
             </a>
-            <a href="https://youtube.com/channel/UCbVX-yAa2etLXvkYGx1C_Dw" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.youtube.com/channel/UCbVX-yAa2etLXvkYGx1C_Dw" target="_blank" rel="noopener noreferrer"
                className="social-icon text-[#39342c] hover:text-[#5a534a]">
               <YouTubeIcon />
             </a>
@@ -210,28 +351,31 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Shop Section (when Shop is selected) */}
+        {/* Shop Section (when Shop is selected or All) */}
         {(activeCategory === "All" || activeCategory === "Shop") && (
           <div className="mb-8">
-            <h2 className="section-header text-lg font-semibold text-[#39342c] mb-4 text-center">
-              🛍️ Shop My Picks
+            <h2 className="section-header text-sm font-semibold text-[#5a534a] mb-4 text-center uppercase tracking-wide">
+              Shop My Picks
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {shopProducts.map((product) => (
                 <a
                   key={product.id}
                   href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="shop-card bg-white rounded-xl overflow-hidden shadow-md"
                 >
-                  <div className="aspect-square bg-[#f5f5f5] flex items-center justify-center text-4xl">
-                    🛒
+                  <div className="aspect-square bg-[#f5f5f5] overflow-hidden">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-3">
                     <p className="text-xs text-[#5a534a] line-clamp-2 mb-1">{product.name}</p>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-[#39342c]">{product.price}</span>
-                      <span className="text-xs text-[#9a9590] line-through">{product.originalPrice}</span>
-                    </div>
+                    <span className="text-sm font-semibold text-[#39342c]">{product.price}</span>
                   </div>
                 </a>
               ))}
@@ -261,19 +405,32 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="link-button relative flex items-center bg-[#e8e6dc] rounded-full px-4 py-3 shadow-sm"
                   >
-                    {/* Thumbnail placeholder */}
-                    <div className="w-10 h-10 rounded-full bg-[#d3d1c7] flex items-center justify-center text-lg mr-3 flex-shrink-0">
-                      {link.title.match(/\p{Emoji}/u)?.[0] || "🔗"}
+                    {/* Thumbnail */}
+                    <div className="w-12 h-12 rounded-full bg-[#d3d1c7] flex items-center justify-center overflow-hidden mr-3 flex-shrink-0">
+                      <img
+                        src={link.thumbnail}
+                        alt={link.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
 
                     {/* Link text */}
-                    <span className="text-sm font-medium text-[#39342c] flex-grow pr-2">
-                      {link.title.replace(/^\p{Emoji}\s*/u, "")}
-                    </span>
+                    <div className="flex-grow pr-2">
+                      <span className="text-sm font-medium text-[#39342c] block">
+                        {link.title}
+                      </span>
+                      {"subtitle" in link && link.subtitle && (
+                        <span className="text-xs text-[#5a534a]">{link.subtitle}</span>
+                      )}
+                    </div>
 
                     {/* Badge if exists */}
                     {"badge" in link && link.badge && (
-                      <span className="absolute right-4 px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded-full">
+                      <span className={`absolute right-4 px-2 py-0.5 text-white text-xs font-bold rounded-full ${
+                        link.badge === "FREE" ? "bg-green-500" :
+                        link.badge === "HOT" ? "bg-red-500" :
+                        "bg-blue-500"
+                      }`}>
                         {link.badge}
                       </span>
                     )}
