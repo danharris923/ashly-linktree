@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #d3d1c7;
+  --background-darker: #c4c2b4;
+  --foreground: #39342c;
+  --button-bg: #e8e6dc;
+  --button-hover: #dedad0;
+  --text-dark: #39342c;
+  --text-muted: #5a534a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Linktree-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+/* Link button animation */
+.link-button {
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+.link-button:hover {
+  transform: scale(1.02);
+  background: var(--button-hover) !important;
+}
+
+.link-button:active {
+  transform: scale(0.98);
+}
+
+/* Social icon hover */
+.social-icon {
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+/* Shop card hover */
+.shop-card {
+  transition: all 0.3s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Pill switcher */
+.pill-button {
+  transition: all 0.2s ease;
+}
+
+.pill-button.active {
+  background: var(--text-dark);
+  color: white;
+}
+
+/* Section headers */
+.section-header {
+  font-family: 'Playfair Display', serif;
+}
