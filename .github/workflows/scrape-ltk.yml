@@ -1,0 +1,46 @@
+name: Scrape LTK Deals Daily
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC (1 AM EST / 2 AM EDT)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run LTK scraper
+        run: node scripts/scrape-ltk.js
+        env:
+          LTK_USERNAME: Ashly_Fraser
+
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet data/ltk-deals.json || echo "changes=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changes
+        if: steps.git-check.outputs.changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/ltk-deals.json public/images/ltk/
+          git commit -m "Update LTK deals - $(date +'%Y-%m-%d')"
+          git push

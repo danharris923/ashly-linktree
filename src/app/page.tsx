@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ltkData from '../../../data/ltk-deals.json';
 
 // Social Icons as SVG components
 const InstagramIcon = () => (
@@ -234,44 +235,15 @@ const linkCategories = {
   }
 };
 
-// Shop products with REAL data and LOCAL images
-const shopProducts = [
-  {
-    id: 1,
-    name: "Cinch-Waist 600-Down-Fill Puffer",
-    price: "$319",
-    image: "/images/products/puffer.webp",
-    url: "https://rstyle.me/+YYHblsQWmAKxrIgR65YH3A"
-  },
-  {
-    id: 2,
-    name: "Women's Steady State Oversized Hoodie",
-    price: "$89",
-    image: "/images/products/hoodie.jpg",
-    url: "https://rstyle.me/+ijNzvzAhGl1BamvTp6i9mg"
-  },
-  {
-    id: 3,
-    name: "Wunder Train High-Rise Tight 28\"",
-    price: "$49",
-    image: "/images/products/wunder-train.webp",
-    url: "https://rstyle.me/+_7qXkdNcQpimfns1Reymhw"
-  },
-  {
-    id: 4,
-    name: "Voyager Large Saffiano Leather Tote Bag",
-    price: "$95.20",
-    image: "/images/products/mk-tote.jpg",
-    url: "https://rstyle.me/+oHSWlZH4E6l6EyKd6K5bcQ"
-  },
-  {
-    id: 5,
-    name: "Dual Pouch Wristlet *Glitter",
-    price: "$34",
-    image: "/images/products/wristlet.webp",
-    url: "https://rstyle.me/+28FzGHlGcw3VZsYhFHAGFw"
-  },
-];
+// Shop products loaded from scraped LTK data (auto-updated by GitHub Action)
+const shopProducts = ltkData.deals.slice(0, 6).map((deal, idx) => ({
+  id: idx + 1,
+  name: deal.name,
+  price: deal.price,
+  image: deal.localImage || deal.image,
+  url: deal.url,
+  brand: deal.brand
+}));
 
 // Category pills for filtering
 const categoryPills = ["All", "Deals", "Coupons", "Apps", "Shop", "Downloads"];

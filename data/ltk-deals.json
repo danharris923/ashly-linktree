@@ -1,0 +1,56 @@
+{
+  "deals": [
+    {
+      "id": "cinchwaist600downfillpuffer319",
+      "name": "Cinch-Waist 600-Down-Fill Puffer",
+      "price": "$319",
+      "brand": "Lululemon",
+      "image": "https://ugc.production.linktr.ee/c37f3a22-dae4-41c0-956e-59daad445cae_LW4CLAS-070108-1.webp",
+      "localImage": "/images/products/puffer.webp",
+      "url": "https://rstyle.me/+YYHblsQWmAKxrIgR65YH3A",
+      "scrapedAt": "2024-01-05T00:00:00.000Z"
+    },
+    {
+      "id": "womenssteadystateoversizedhoodie89",
+      "name": "Women's Steady State Oversized Hoodie",
+      "price": "$89",
+      "brand": "Lululemon",
+      "image": "https://ugc.production.linktr.ee/77b2b4e6-2ea7-4152-ab6c-35d8d5fbd88d_LW3KJXS-036865-1.jpeg",
+      "localImage": "/images/products/hoodie.jpg",
+      "url": "https://rstyle.me/+ijNzvzAhGl1BamvTp6i9mg",
+      "scrapedAt": "2024-01-05T00:00:00.000Z"
+    },
+    {
+      "id": "wundertrainhighrisetight2849",
+      "name": "Wunder Train High-Rise Tight 28\"",
+      "price": "$49",
+      "brand": "Lululemon",
+      "image": "https://ugc.production.linktr.ee/7693ecf8-0fa3-4680-86b4-651876235bda_LW5DJ3S-047184-1.webp",
+      "localImage": "/images/products/wunder-train.webp",
+      "url": "https://rstyle.me/+_7qXkdNcQpimfns1Reymhw",
+      "scrapedAt": "2024-01-05T00:00:00.000Z"
+    },
+    {
+      "id": "voyagerlargesaffianoleathertotebag9520",
+      "name": "Voyager Large Saffiano Leather Tote Bag",
+      "price": "$95.20",
+      "brand": "Michael Kors",
+      "image": "https://ugc.production.linktr.ee/d88c23c1-7674-4a97-8601-066e0379ae1f_35S5SV6T7L-0310-1.jpeg",
+      "localImage": "/images/products/mk-tote.jpg",
+      "url": "https://rstyle.me/+oHSWlZH4E6l6EyKd6K5bcQ",
+      "scrapedAt": "2024-01-05T00:00:00.000Z"
+    },
+    {
+      "id": "dualpouchwristletglitter34",
+      "name": "Dual Pouch Wristlet *Glitter",
+      "price": "$34",
+      "brand": "Lululemon",
+      "image": "https://ugc.production.linktr.ee/ee1401f8-620c-4017-a1b3-f5fd163dfb28_LW9FRWS-069830-1.webp",
+      "localImage": "/images/products/wristlet.webp",
+      "url": "https://rstyle.me/+28FzGHlGcw3VZsYhFHAGFw",
+      "scrapedAt": "2024-01-05T00:00:00.000Z"
+    }
+  ],
+  "lastUpdated": "2024-01-05T00:00:00.000Z",
+  "source": "https://www.shopltk.com/explore/Ashly_Fraser"
+}
