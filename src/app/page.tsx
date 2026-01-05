@@ -1,7 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import ltkData from '../../../data/ltk-deals.json';
+import ltkData from '../data/ltk-deals.json';
+
+// Type definitions
+interface LtkDeal {
+  id: string;
+  name: string;
+  price: string;
+  brand: string;
+  image: string;
+  localImage?: string;
+  url: string;
+  scrapedAt: string;
+}
+
+interface LtkData {
+  deals: LtkDeal[];
+  lastUpdated: string;
+  source: string;
+}
+
+const typedLtkData = ltkData as LtkData;
+
+// Link types
+interface LinkItem {
+  title: string;
+  url: string;
+  thumbnail: string;
+  badge?: string;
+  subtitle?: string;
+}
+
+interface LinkCategory {
+  title: string;
+  links: LinkItem[];
+}
 
 // Social Icons as SVG components
 const InstagramIcon = () => (
@@ -29,7 +63,7 @@ const YouTubeIcon = () => (
 );
 
 // All link data with REAL URLs and LOCAL images
-const linkCategories = {
+const linkCategories: Record<string, LinkCategory> = {
   freeDownloads: {
     title: "FREE Downloads",
     links: [
@@ -236,7 +270,7 @@ const linkCategories = {
 };
 
 // Shop products loaded from scraped LTK data (auto-updated by GitHub Action)
-const shopProducts = ltkData.deals.slice(0, 6).map((deal, idx) => ({
+const shopProducts = typedLtkData.deals.slice(0, 6).map((deal, idx) => ({
   id: idx + 1,
   name: deal.name,
   price: deal.price,

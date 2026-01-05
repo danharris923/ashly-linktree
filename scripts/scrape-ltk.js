@@ -9,7 +9,7 @@ const path = require('path');
 const https = require('https');
 
 const LTK_USERNAME = process.env.LTK_USERNAME || 'Ashly_Fraser';
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const DATA_DIR = path.join(__dirname, '..', 'src', 'data');
 const IMAGES_DIR = path.join(__dirname, '..', 'public', 'images', 'ltk');
 const DEALS_FILE = path.join(DATA_DIR, 'ltk-deals.json');
 
