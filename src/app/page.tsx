@@ -283,44 +283,73 @@ const shopProducts = typedLtkData.deals.slice(0, 6).map((deal, idx) => ({
 const categoryPills = ["All", "Deals", "Coupons", "Apps", "Shop", "Downloads"];
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeTab, setActiveTab] = useState<"links" | "shop">("links");
   const [showAllApps, setShowAllApps] = useState(false);
 
-  // Filter logic based on active category
-  const shouldShowSection = (sectionKey: string) => {
-    if (activeCategory === "All") return true;
-    if (activeCategory === "Deals" && (sectionKey === "featured" || sectionKey === "limitedDeals")) return true;
-    if (activeCategory === "Coupons" && sectionKey === "coupons") return true;
-    if (activeCategory === "Apps" && sectionKey === "apps") return true;
-    if (activeCategory === "Downloads" && sectionKey === "freeDownloads") return true;
-    return false;
-  };
+  // All links combined for Links tab
+  const allLinks = [
+    ...linkCategories.freeDownloads.links,
+    ...linkCategories.featured.links,
+    ...linkCategories.limitedDeals.links,
+    ...linkCategories.coupons.links,
+    ...(showAllApps ? linkCategories.apps.links : linkCategories.apps.links.slice(0, 5)),
+    ...linkCategories.news.links,
+  ];
 
   return (
-    <div className="min-h-screen" style={{ background: "linear-gradient(180deg, #c4c2b4 0%, #d3d1c7 100%)" }}>
-      <main className="max-w-[680px] mx-auto px-4 py-8">
+    <div className="min-h-screen bg-[#9a9590] flex items-center justify-center p-4">
+      {/* Main Card Container */}
+      <div className="w-full max-w-[600px] bg-[#e8e6dc] rounded-3xl overflow-hidden shadow-2xl">
 
-        {/* Profile Section */}
-        <div className="flex flex-col items-center mb-6">
-          {/* Profile Picture */}
-          <div className="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-white shadow-lg">
+        {/* Hero Section with Photo */}
+        <div className="relative">
+          {/* Top Icons */}
+          <div className="absolute top-4 left-4 z-10">
+            <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-md">
+              <span className="text-[#39342c] text-lg">✳</span>
+            </div>
+          </div>
+          <div className="absolute top-4 right-4 z-10 flex gap-2">
+            <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-md">
+              <svg className="w-5 h-5 text-[#39342c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-md">
+              <svg className="w-5 h-5 text-[#39342c]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Large Hero Photo with Gradient Fade */}
+          <div className="relative h-[450px] sm:h-[500px]">
             <img
               src="/images/profile/ashly.jpg"
               alt="Ashly - Savings Guru"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
+            {/* Gradient overlay fading to card background */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#e8e6dc]"
+                 style={{ background: 'linear-gradient(to bottom, transparent 40%, #e8e6dc 95%)' }} />
           </div>
+        </div>
 
-          {/* Name & Bio */}
-          <h1 className="text-xl font-semibold text-[#39342c] mb-1">
+        {/* Profile Info Section */}
+        <div className="px-6 pb-6 -mt-8 relative z-10">
+          {/* Name */}
+          <h1 className="text-3xl sm:text-4xl text-center text-[#39342c] mb-2" style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}>
             Ashly→Finds Deals
           </h1>
-          <p className="text-sm text-[#5a534a] text-center max-w-xs mb-4">
-            Amazon, Lululemon, Costco, Dollarama & more—best finds & deals daily!
+
+          {/* Bio */}
+          <p className="text-sm text-[#5a534a] text-center mb-4 leading-relaxed">
+            Amazon, Lululemon, Costco, Dollarama<br />
+            & more–best finds & deals daily! .
           </p>
 
           {/* Social Icons */}
-          <div className="flex gap-4 mb-6">
+          <div className="flex justify-center gap-5 mb-6">
             <a href="https://instagram.com/ashly__savingsguruca" target="_blank" rel="noopener noreferrer"
                className="social-icon text-[#39342c] hover:text-[#5a534a]">
               <InstagramIcon />
@@ -338,39 +367,104 @@ export default function Home() {
               <YouTubeIcon />
             </a>
           </div>
-        </div>
 
-        {/* Category Pill Switcher */}
-        <div className="flex flex-wrap justify-center gap-2 mb-6">
-          {categoryPills.map((pill) => (
+          {/* Links / Shop Toggle */}
+          <div className="flex justify-center gap-1 mb-6 bg-[#d5d3c9] rounded-full p-1 max-w-xs mx-auto">
             <button
-              key={pill}
-              onClick={() => setActiveCategory(pill)}
-              className={`pill-button px-4 py-2 rounded-full text-sm font-medium transition-all
-                ${activeCategory === pill
-                  ? "bg-[#39342c] text-white"
-                  : "bg-[#e8e6dc] text-[#39342c] hover:bg-[#dedad0]"
-                }`}
+              onClick={() => setActiveTab("links")}
+              className={`flex-1 py-2.5 px-6 rounded-full text-sm font-medium transition-all ${
+                activeTab === "links"
+                  ? "bg-[#39342c] text-white shadow-md"
+                  : "text-[#39342c] hover:bg-[#c5c3b9]"
+              }`}
             >
-              {pill}
+              Links
             </button>
-          ))}
-        </div>
+            <button
+              onClick={() => setActiveTab("shop")}
+              className={`flex-1 py-2.5 px-6 rounded-full text-sm font-medium transition-all ${
+                activeTab === "shop"
+                  ? "bg-[#39342c] text-white shadow-md"
+                  : "text-[#39342c] hover:bg-[#c5c3b9]"
+              }`}
+            >
+              Shop
+            </button>
+          </div>
 
-        {/* Shop Section (when Shop is selected or All) */}
-        {(activeCategory === "All" || activeCategory === "Shop") && (
-          <div className="mb-8">
-            <h2 className="section-header text-sm font-semibold text-[#5a534a] mb-4 text-center uppercase tracking-wide">
-              Shop My Picks
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {/* LINKS TAB CONTENT */}
+          {activeTab === "links" && (
+            <div className="flex flex-col gap-3">
+              {allLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-button relative flex items-center bg-[#d5d3c9] hover:bg-[#cac8be] rounded-full px-4 py-3 shadow-sm transition-all"
+                >
+                  {/* Thumbnail */}
+                  <div className="w-11 h-11 rounded-full bg-[#c5c3b9] flex items-center justify-center overflow-hidden mr-3 flex-shrink-0">
+                    <img
+                      src={link.thumbnail}
+                      alt={link.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Link text */}
+                  <div className="flex-grow pr-2">
+                    <span className="text-sm font-medium text-[#39342c] block">
+                      {link.title}
+                    </span>
+                    {"subtitle" in link && link.subtitle && (
+                      <span className="text-xs text-[#5a534a]">{link.subtitle}</span>
+                    )}
+                  </div>
+
+                  {/* Badge if exists */}
+                  {"badge" in link && link.badge && (
+                    <span className={`absolute right-4 px-2 py-0.5 text-white text-xs font-bold rounded-full ${
+                      link.badge === "FREE" ? "bg-green-500" :
+                      link.badge === "HOT" ? "bg-red-500" :
+                      "bg-blue-500"
+                    }`}>
+                      {link.badge}
+                    </span>
+                  )}
+                </a>
+              ))}
+
+              {/* Show more button */}
+              {!showAllApps && linkCategories.apps.links.length > 5 && (
+                <button
+                  onClick={() => setShowAllApps(true)}
+                  className="text-sm text-[#5a534a] hover:text-[#39342c] font-medium py-2 text-center"
+                >
+                  Show {linkCategories.apps.links.length - 5} More ↓
+                </button>
+              )}
+              {showAllApps && (
+                <button
+                  onClick={() => setShowAllApps(false)}
+                  className="text-sm text-[#5a534a] hover:text-[#39342c] font-medium py-2 text-center"
+                >
+                  Show Less ↑
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* SHOP TAB CONTENT */}
+          {activeTab === "shop" && (
+            <div className="grid grid-cols-2 gap-3">
               {shopProducts.map((product) => (
                 <a
                   key={product.id}
                   href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shop-card bg-white rounded-xl overflow-hidden shadow-md"
+                  className="shop-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all"
                 >
                   <div className="aspect-square bg-[#f5f5f5] overflow-hidden">
                     <img
@@ -386,88 +480,10 @@ export default function Home() {
                 </a>
               ))}
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Link Sections */}
-        {Object.entries(linkCategories).map(([key, category]) => {
-          if (!shouldShowSection(key)) return null;
-
-          const displayLinks = key === "apps" && !showAllApps
-            ? category.links.slice(0, 5)
-            : category.links;
-
-          return (
-            <div key={key} className="mb-6">
-              <h2 className="section-header text-sm font-semibold text-[#5a534a] mb-3 text-center uppercase tracking-wide">
-                {category.title}
-              </h2>
-              <div className="flex flex-col gap-3">
-                {displayLinks.map((link, idx) => (
-                  <a
-                    key={idx}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-button relative flex items-center bg-[#e8e6dc] rounded-full px-4 py-3 shadow-sm"
-                  >
-                    {/* Thumbnail */}
-                    <div className="w-12 h-12 rounded-full bg-[#d3d1c7] flex items-center justify-center overflow-hidden mr-3 flex-shrink-0">
-                      <img
-                        src={link.thumbnail}
-                        alt={link.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    {/* Link text */}
-                    <div className="flex-grow pr-2">
-                      <span className="text-sm font-medium text-[#39342c] block">
-                        {link.title}
-                      </span>
-                      {"subtitle" in link && link.subtitle && (
-                        <span className="text-xs text-[#5a534a]">{link.subtitle}</span>
-                      )}
-                    </div>
-
-                    {/* Badge if exists */}
-                    {"badge" in link && link.badge && (
-                      <span className={`absolute right-4 px-2 py-0.5 text-white text-xs font-bold rounded-full ${
-                        link.badge === "FREE" ? "bg-green-500" :
-                        link.badge === "HOT" ? "bg-red-500" :
-                        "bg-blue-500"
-                      }`}>
-                        {link.badge}
-                      </span>
-                    )}
-                  </a>
-                ))}
-
-                {/* Show more button for apps */}
-                {key === "apps" && category.links.length > 5 && (
-                  <button
-                    onClick={() => setShowAllApps(!showAllApps)}
-                    className="text-sm text-[#5a534a] hover:text-[#39342c] font-medium py-2"
-                  >
-                    {showAllApps ? "Show Less ↑" : `Show ${category.links.length - 5} More ↓`}
-                  </button>
-                )}
-              </div>
-            </div>
-          );
-        })}
-
-        {/* Footer */}
-        <footer className="mt-12 pt-6 border-t border-[#c4c2b4] text-center">
-          <p className="text-xs text-[#9a9590]">
-            © 2024 Ashly Finds Deals • Built with ❤️ in Canada
-          </p>
-          <p className="text-xs text-[#9a9590] mt-1">
-            Affiliate links help support this page at no extra cost to you
-          </p>
-        </footer>
-
-      </main>
+        </div>
+      </div>
     </div>
   );
 }
