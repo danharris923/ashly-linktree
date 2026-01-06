@@ -297,9 +297,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#9a9590] flex items-center justify-center p-4">
+    <main className="min-h-screen bg-[#9a9590] flex items-center justify-center p-4">
       {/* Main Card Container */}
-      <div className="w-full max-w-[600px] bg-[#e8e6dc] rounded-3xl overflow-hidden shadow-2xl">
+      <article className="w-full max-w-[600px] bg-[#e8e6dc] rounded-3xl overflow-hidden shadow-2xl" itemScope itemType="https://schema.org/Person">
 
         {/* Hero Section with Photo */}
         <div className="relative">
@@ -326,8 +326,9 @@ export default function Home() {
           <div className="relative h-[450px] sm:h-[500px]">
             <img
               src="/images/profile/ashly.jpg"
-              alt="Ashly - Savings Guru"
+              alt="Ashly Fraser"
               className="w-full h-full object-cover object-top"
+              itemProp="image"
             />
             {/* Gradient overlay fading to card background */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#e8e6dc]"
@@ -338,35 +339,38 @@ export default function Home() {
         {/* Profile Info Section */}
         <div className="px-6 pb-6 -mt-8 relative z-10">
           {/* Name */}
-          <h1 className="text-3xl sm:text-4xl text-center text-[#39342c] mb-2" style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }}>
-            Ashly→Finds Deals
+          <h1 className="text-3xl sm:text-4xl text-center text-[#39342c] mb-2" style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }} itemProp="name">
+            Ashly Finds Deals
           </h1>
+          <meta itemProp="alternateName" content="Ashly Fraser" />
+          <meta itemProp="jobTitle" content="Deal Finder" />
+          <meta itemProp="url" content="https://ashlyfraser.ca" />
 
           {/* Bio */}
-          <p className="text-sm text-[#5a534a] text-center mb-4 leading-relaxed">
+          <p className="text-sm text-[#5a534a] text-center mb-4 leading-relaxed" itemProp="description">
             Amazon, Lululemon, Costco, Dollarama<br />
-            & more–best finds & deals daily! .
+            & more–best finds & deals daily!
           </p>
 
           {/* Social Icons */}
-          <div className="flex justify-center gap-5 mb-6">
+          <nav aria-label="Social media links" className="flex justify-center gap-5 mb-6">
             <a href="https://instagram.com/ashly__savingsguruca" target="_blank" rel="noopener noreferrer"
-               className="social-icon text-[#39342c] hover:text-[#5a534a]">
+               className="social-icon text-[#39342c] hover:text-[#5a534a]" itemProp="sameAs" aria-label="Follow on Instagram">
               <InstagramIcon />
             </a>
             <a href="https://www.facebook.com/ashly.fraser.96/" target="_blank" rel="noopener noreferrer"
-               className="social-icon text-[#39342c] hover:text-[#5a534a]">
+               className="social-icon text-[#39342c] hover:text-[#5a534a]" itemProp="sameAs" aria-label="Follow on Facebook">
               <FacebookIcon />
             </a>
             <a href="https://tiktok.com/@savingsguru" target="_blank" rel="noopener noreferrer"
-               className="social-icon text-[#39342c] hover:text-[#5a534a]">
+               className="social-icon text-[#39342c] hover:text-[#5a534a]" itemProp="sameAs" aria-label="Follow on TikTok">
               <TikTokIcon />
             </a>
             <a href="https://www.youtube.com/channel/UCbVX-yAa2etLXvkYGx1C_Dw" target="_blank" rel="noopener noreferrer"
-               className="social-icon text-[#39342c] hover:text-[#5a534a]">
+               className="social-icon text-[#39342c] hover:text-[#5a534a]" itemProp="sameAs" aria-label="Subscribe on YouTube">
               <YouTubeIcon />
             </a>
-          </div>
+          </nav>
 
           {/* Links / Shop Toggle */}
           <div className="flex justify-center gap-1 mb-6 bg-[#d5d3c9] rounded-full p-1 max-w-xs mx-auto">
@@ -394,7 +398,8 @@ export default function Home() {
 
           {/* LINKS TAB CONTENT */}
           {activeTab === "links" && (
-            <div className="flex flex-col gap-3">
+            <section aria-labelledby="links-heading" className="flex flex-col gap-3">
+              <h2 id="links-heading" className="sr-only">Deals, Coupons & Money-Saving Links</h2>
               {allLinks.map((link, idx) => (
                 <a
                   key={idx}
@@ -407,8 +412,10 @@ export default function Home() {
                   <div className="w-11 h-11 rounded-full bg-[#c5c3b9] flex items-center justify-center overflow-hidden mr-3 flex-shrink-0">
                     <img
                       src={link.thumbnail}
-                      alt={link.title}
+                      alt=""
+                      aria-hidden="true"
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
 
@@ -452,38 +459,44 @@ export default function Home() {
                   Show Less ↑
                 </button>
               )}
-            </div>
+            </section>
           )}
 
           {/* SHOP TAB CONTENT */}
           {activeTab === "shop" && (
-            <div className="grid grid-cols-2 gap-3">
+            <section aria-labelledby="shop-heading" className="grid grid-cols-2 gap-3">
+              <h2 id="shop-heading" className="sr-only">Shop Featured Products</h2>
               {shopProducts.map((product) => (
-                <a
+                <article
                   key={product.id}
-                  href={product.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="shop-card bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all"
                 >
-                  <div className="aspect-square bg-[#f5f5f5] overflow-hidden">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <p className="text-xs text-[#5a534a] line-clamp-2 mb-1">{product.name}</p>
-                    <span className="text-sm font-semibold text-[#39342c]">{product.price}</span>
-                  </div>
-                </a>
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="aspect-square bg-[#f5f5f5] overflow-hidden">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-3">
+                      <h3 className="text-xs text-[#5a534a] line-clamp-2 mb-1">{product.name}</h3>
+                      <span className="text-sm font-semibold text-[#39342c]">{product.price}</span>
+                    </div>
+                  </a>
+                </article>
               ))}
-            </div>
+            </section>
           )}
 
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }
