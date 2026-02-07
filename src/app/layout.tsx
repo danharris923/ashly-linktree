@@ -214,6 +214,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          defer
+          src="https://analytics.promopenguin.ca/script.js"
+          data-website-id="07a30460-8b9d-4b4c-ba0d-3b7f162dc704"
+        />
       </head>
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         {children}
