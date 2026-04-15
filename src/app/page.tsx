@@ -64,46 +64,18 @@ const YouTubeIcon = () => (
 
 // All link data with REAL URLs and LOCAL images
 const linkCategories: Record<string, LinkCategory> = {
-  freeDownloads: {
-    title: "FREE Downloads",
-    links: [
-      {
-        title: "Complete Guide to Couponing in Canada",
-        url: "#",
-        thumbnail: "/images/thumbnails/couponing-guide.png",
-        badge: "FREE"
-      },
-      {
-        title: "28 Days to Digital Marketing Mastery",
-        url: "#",
-        thumbnail: "/images/thumbnails/marketing-guide.png",
-        badge: "FREE"
-      },
-    ]
-  },
   featured: {
     title: "Featured",
     links: [
-      {
-        title: "Costco Canada - Membership Deal",
-        url: "https://rstyle.me/+_72JT5Cj3V6yK0F-7ACrug",
-        thumbnail: "/images/thumbnails/costco.png"
-      },
       {
         title: "Daily Amazon Deals",
         url: "https://www.savingsguru.ca/author/ashly1818",
         thumbnail: "/images/thumbnails/amazon.png"
       },
       {
-        title: "Secret Facebook Savings Group",
+        title: "Secret Facebook Savings Group with almost 1 million Canadian Followers",
         url: "https://www.facebook.com/groups/savingsguru",
-        thumbnail: "/images/thumbnails/facebook-group.png",
-        subtitle: "Nearly 1 million followers!"
-      },
-      {
-        title: "Shop My LTK",
-        url: "https://www.shopltk.com/explore/Ashly_Fraser",
-        thumbnail: "/images/thumbnails/ltk.png"
+        thumbnail: "/images/thumbnails/facebook-group.png"
       },
     ]
   },
@@ -111,33 +83,38 @@ const linkCategories: Record<string, LinkCategory> = {
     title: "Limited Time Exclusive Deals",
     links: [
       {
-        title: "LuLuLemon Sale",
+        title: "LuLuLemon We Made Too Much",
         url: "https://rstyle.me/+s2g_Jh19HtM68mHQ6bwktQ",
         thumbnail: "/images/thumbnails/lululemon.png",
         badge: "HOT"
       },
       {
-        title: "Michael Kors Sale",
+        title: "Michael Kors",
         url: "https://rstyle.me/+FpDHJk_AQDMjZRgs9rISwA",
         thumbnail: "/images/thumbnails/michael-kors.png"
       },
       {
-        title: "Sephora Sale",
+        title: "Crocs",
+        url: "https://rstyle.me/+Xo43RJSdcjrWd12iySdsmQ",
+        thumbnail: "/images/thumbnails/crocs.png"
+      },
+      {
+        title: "Sephora",
         url: "https://rstyle.me/+yJZdVOpPddbNrwi9x_CJzA",
         thumbnail: "/images/thumbnails/sephora.png"
       },
       {
-        title: "GAP Sale",
+        title: "GAP",
         url: "https://rstyle.me/+FNJEpvUwq6ZHdA6dKZU6Ew",
         thumbnail: "/images/thumbnails/gap.png"
       },
       {
-        title: "Peoples Jewelers Sale",
+        title: "Peoples Jewelers",
         url: "https://rstyle.me/+VMtCTFrlU78a1o7PbuCHXw",
         thumbnail: "/images/thumbnails/peoples.png"
       },
       {
-        title: "Stanley Sale",
+        title: "Stanley",
         url: "https://rstyle.me/+J19t8HJlM2LK1OkvnCN6jA",
         thumbnail: "/images/thumbnails/stanley.png",
         badge: "NEW"
@@ -163,7 +140,7 @@ const linkCategories: Record<string, LinkCategory> = {
         thumbnail: "/images/thumbnails/birthday.png"
       },
       {
-        title: "Seniors Discounts",
+        title: "Seniors discounts",
         url: "https://www.savingsguru.ca/seniors-discounts",
         thumbnail: "/images/thumbnails/seniors.png"
       },
@@ -183,20 +160,24 @@ const linkCategories: Record<string, LinkCategory> = {
         thumbnail: "/images/thumbnails/home-depot.png"
       },
       {
-        title: "SampleSource.com - Free Samples",
+        title: "Kid workshop | RONA",
+        url: "https://www.rona.ca/en/kid-workshop",
+        thumbnail: "/images/thumbnails/rona.png"
+      },
+      {
+        title: "SampleSource.com",
         url: "https://www.samplesource.com/?site=en",
         thumbnail: "/images/thumbnails/samplesource.jpg"
       },
       {
-        title: "Too Good To Go",
+        title: "To Good To Go",
         url: "https://www.toogoodtogo.com/en-ca/user",
         thumbnail: "/images/thumbnails/toogoodtogo.png"
       },
       {
-        title: "Flashfood",
+        title: "Flashfood Use code ASHL4M3YY",
         url: "https://flashfood.onelink.me/yAxk/referral",
-        thumbnail: "/images/thumbnails/flashfood.png",
-        subtitle: "Code: ASHL4M3YY"
+        thumbnail: "/images/thumbnails/flashfood.png"
       },
       {
         title: "Checkout 51",
@@ -204,12 +185,12 @@ const linkCategories: Record<string, LinkCategory> = {
         thumbnail: "/images/thumbnails/checkout51.jpg"
       },
       {
-        title: "reebee: Flyers & Shopping List",
+        title: "reebee: Flyers & Shopping List Download",
         url: "https://www.appconner.com/app-reebee-flyers-shopping-list",
         thumbnail: "/images/thumbnails/reebee.png"
       },
       {
-        title: "Caddle Money Savings App",
+        title: "Join Caddle Money Savings App",
         url: "http://ssqt.co/mesd5EN",
         thumbnail: "/images/thumbnails/caddle.png"
       },
@@ -220,7 +201,7 @@ const linkCategories: Record<string, LinkCategory> = {
       },
       {
         title: "PC Optimum Coupons",
-        url: "https://www.pcoptimum.ca/load?page=MKDigitalCoupon20230202",
+        url: "https://www.pcoptimum.ca/load?page=MKDigitalCoupon20230202&navid=flyer-deals-nav-mkt-digital-coupons",
         thumbnail: "/images/thumbnails/pcoptimum.png"
       },
       {
@@ -229,26 +210,19 @@ const linkCategories: Record<string, LinkCategory> = {
         thumbnail: "/images/thumbnails/doordash-prime.png"
       },
       {
-        title: "Skip - Online Delivery",
+        title: "Skip | Online Delivery",
         url: "https://www.skipthedishes.com/r/AbvB0FhliE",
         thumbnail: "/images/thumbnails/skip.png"
       },
       {
-        title: "DoorDash",
+        title: "DoorDash: Food, Grocery and Retail",
         url: "https://drd.sh/c3luC9exwHXEs19d",
         thumbnail: "/images/thumbnails/doordash.png"
       },
       {
-        title: "Uber Eats",
-        url: "https://ubereats.com/feed?promoCode=eats-fl8pj9j2v9",
-        thumbnail: "/images/thumbnails/ubereats.png",
-        subtitle: "Code: eats-fl8pj9j2v9"
-      },
-      {
-        title: "Instacart",
+        title: "Get $10 off Instacart",
         url: "https://inst.cr/t/77a2c1909",
-        thumbnail: "/images/thumbnails/instacart.png",
-        subtitle: "Code: A246E61"
+        thumbnail: "/images/thumbnails/instacart.png"
       },
       {
         title: "Flipp: Shop Grocery Deals",
@@ -261,7 +235,7 @@ const linkCategories: Record<string, LinkCategory> = {
     title: "In The News",
     links: [
       {
-        title: "The Globe and Mail: The savvy shopper's guide to scoring the best deals",
+        title: "The savvy shopper's guide to scoring the best deals this holiday season",
         url: "https://www.theglobeandmail.com/business/adv/article-the-savvy-shoppers-guide-to-scoring-the-best-deals-this-holiday-season",
         thumbnail: "/images/thumbnails/globe-mail.jpg"
       },
@@ -288,7 +262,6 @@ export default function Home() {
 
   // All links combined for Links tab
   const allLinks = [
-    ...linkCategories.freeDownloads.links,
     ...linkCategories.featured.links,
     ...linkCategories.limitedDeals.links,
     ...linkCategories.coupons.links,
