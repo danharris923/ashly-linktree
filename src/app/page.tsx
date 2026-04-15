@@ -313,9 +313,9 @@ export default function Home() {
         <div className="px-6 pb-6 -mt-8 relative z-10">
           {/* Name */}
           <h1 className="text-3xl sm:text-4xl text-center text-[#39342c] mb-2" style={{ fontFamily: 'var(--font-playfair), Playfair Display, serif' }} itemProp="name">
-            Ashly Finds Deals
+            Ashly Fraser
           </h1>
-          <meta itemProp="alternateName" content="Ashly Fraser" />
+          <meta itemProp="alternateName" content="@AshlyFraser" />
           <meta itemProp="jobTitle" content="Deal Finder" />
           <meta itemProp="url" content="https://ashlyfraser.ca" />
 

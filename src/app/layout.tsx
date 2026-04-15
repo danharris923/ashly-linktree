@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description:
       "Save money with Canada's top deal hunter! Daily deals on Amazon, Lululemon, Costco, Dollarama & more. Free coupons and exclusive discount codes.",
     url: baseUrl,
-    siteName: "Ashly Finds Deals",
+    siteName: "Ashly Fraser",
     images: [
       {
         url: "/images/profile/ashly.jpg",
@@ -102,7 +102,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${baseUrl}/#website`,
       url: baseUrl,
-      name: "Ashly Finds Deals",
+      name: "Ashly Fraser",
       description: "Daily deals, freebies & coupons for Canadians",
       publisher: { "@id": `${baseUrl}/#person` },
       potentialAction: {
@@ -141,7 +141,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": `${baseUrl}/#webpage`,
       url: baseUrl,
-      name: "Ashly Finds Deals",
+      name: "Ashly Fraser",
       isPartOf: { "@id": `${baseUrl}/#website` },
       about: { "@id": `${baseUrl}/#person` },
       description:
@@ -176,19 +176,19 @@ const jsonLd = {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Costco Canada Membership Deal",
-          url: "https://rstyle.me/+_72JT5Cj3V6yK0F-7ACrug",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
           name: "Daily Amazon Deals",
           url: "https://www.savingsguru.ca/author/ashly1818",
         },
         {
           "@type": "ListItem",
+          position: 2,
+          name: "Secret Facebook Savings Group",
+          url: "https://www.facebook.com/groups/savingsguru",
+        },
+        {
+          "@type": "ListItem",
           position: 3,
-          name: "LuLuLemon Sale",
+          name: "LuLuLemon We Made Too Much",
           url: "https://rstyle.me/+s2g_Jh19HtM68mHQ6bwktQ",
         },
       ],
